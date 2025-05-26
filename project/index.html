@@ -1,13 +1,302 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NXT Delivery Website</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NXT Delivery Request</title>
+  <link rel="icon" href="./nxt-delivery/logo.jpeg" type="image/x-icon" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9fa;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    .card {
+      display: flex;
+      width: 90%;
+      max-width: 900px;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .brand-section {
+      width: 40%;
+      background: #075e54;
+      color: white;
+      padding: 5% 3%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .logo-container {
+      margin-bottom: 5%;
+      max-width: 100%;
+    }
+
+    .logo {
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+    }
+
+    .slogan {
+      font-size: clamp(0.8rem, 2vw, 1.1rem);
+      line-height: 1.5;
+      font-weight: 300;
+      margin-top: 10px;
+    }
+
+    .form-section {
+      width: 60%;
+      padding: 5% 4%;
+      overflow-y: auto;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      border-bottom: 2px solid #25D366;
+      padding-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #555;
+      font-size: clamp(0.8rem, 2vw, 1rem);
+    }
+
+    input {
+      width: 100%;
+      padding: clamp(8px, 2vw, 12px);
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: clamp(0.8rem, 2vw, 1rem);
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #25D366;
+      box-shadow: 0 0 5px rgba(37, 211, 102, 0.3);
+    }
+
+    button {
+      width: 100%;
+      padding: clamp(10px, 2vw, 14px);
+      background-color: #25D366;
+      color: white;
+      font-weight: bold;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    button:hover {
+      background-color: #20b85c;
+    }
+
+    .images-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2%;
+    }
+
+    .service-image {
+      width: 32%;
+      height: clamp(50px, 10vw, 80px);
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .founder-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .founder-image {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #25D366;
+    }
+
+    .founder-name {
+      font-weight: 500;
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex-direction: column;
+        width: 95%;
+        max-height: 98vh;
+      }
+
+      .brand-section,
+      .form-section {
+        width: 100%;
+        padding: 20px;
+      }
+
+      .brand-section {
+        padding: 30px 20px;
+      }
+
+      .logo {
+        max-width: 120px;
+      }
+
+      .form-section {
+        overflow-y: auto;
+      }
+
+      .form-group {
+        margin-bottom: 12px;
+      }
+
+      button {
+        margin-bottom: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        width: 98%;
+        max-height: 95vh;
+      }
+
+      .brand-section {
+        padding: 20px 15px;
+      }
+
+      .logo {
+        max-width: 100px;
+      }
+
+      .images-row {
+        gap: 5px;
+      }
+
+      .service-image {
+        height: 40px;
+      }
+
+      .form-group {
+        margin-bottom: 10px;
+      }
+
+      input,
+      button {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="brand-section">
+      <div class="logo-container">
+        <img src="./nxt-delivery/logo.jpeg" alt="NXT Delivery Logo" class="logo" />
+      </div>
+      <p class="slogan">
+        Driven by Safety Delivered with speed.<br />Fast. Reliable. Secure.
+      </p>
+    </div>
+
+    <div class="form-section">
+      <h2>NXT Delivery Book now</h2>
+
+      <div class="form-group">
+        <label for="from">From:</label>
+        <input type="text" id="from" placeholder="Enter pickup location" />
+      </div>
+
+      <div class="form-group">
+        <label for="to">To:</label>
+        <input type="text" id="to" placeholder="Enter drop location" />
+      </div>
+
+      <div class="form-group">
+        <label for="items">Items:</label>
+        <input type="text" id="items" placeholder="List the items" />
+      </div>
+
+      <div class="form-group">
+        <label for="weight">Weight (in kg):</label>
+        <input type="number" id="weight" placeholder="Enter total weight" />
+      </div>
+
+      <button onclick="sendToWhatsApp()">Send to WhatsApp</button>
+
+      <div class="founder-section">
+        <img src="./nxt-delivery/founder.png" alt="Founder" class="founder-image" />
+        <p class="founder-name">Founder: Amgoth Praveen</p>
+      </div>
+
+      <div class="images-row">
+        <img src="./nxt-delivery/image1.jpg" alt="Delivery Service 1" class="service-image" />
+        <img src="./nxt-delivery/Image2.jpg" alt="Delivery Service 2" class="service-image" />
+        <img src="./nxt-delivery/image3.webp" alt="Delivery Service 3" class="service-image" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function sendToWhatsApp() {
+      const from = document.getElementById('from').value;
+      const to = document.getElementById('to').value;
+      const items = document.getElementById('items').value;
+      const weight = document.getElementById('weight').value;
+
+      if (!from || !to || !items || !weight) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      const message = `*NXT Delivery Request*\n\nFrom: ${from}\nTo: ${to}\nItems: ${items}\nWeight: ${weight} kg`;
+      const encodedMsg = encodeURIComponent(message);
+      const phone = '9391332253';
+
+      window.open(`https://wa.me/91${phone}?text=${encodedMsg}`, '_blank');
+    }
+  </script>
+</body>
 </html>
