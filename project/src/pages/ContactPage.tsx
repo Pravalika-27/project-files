@@ -112,7 +112,7 @@ const ContactPage: React.FC = () => {
                     <h3 className="text-lg font-semibold mb-1">Phone</h3>
                     <p className="text-gray-600">
                       <a href="tel:+919182181206" className="hover:text-accent-500">
-                        +91 800 123 4567
+                        +91 918 218 1206
                       </a>
                     </p>
                   </div>
